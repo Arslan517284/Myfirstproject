@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Comfort AC Repair | 24/7 Emergency HVAC Services</title>
+    <meta name="description" content="Professional AC repair and HVAC services available 24/7. Same-day appointments, licensed technicians, and competitive pricing.">
+    <meta name="keywords" content="AC repair, air conditioning repair, HVAC services, emergency AC repair, AC maintenance">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066CC;
+            --secondary: #00A8E8;
+            --accent: #FF6B35;
+            --dark: #1A1A1A;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+            --text: #333333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: #FF5722;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #FF5722;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: white;
+        }
+
+        /* Trust Badges */
+        .trust-section {
+            background: var(--light);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .trust-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .trust-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .trust-item-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .trust-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            color: var(--dark);
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            border-left: 5px solid transparent;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .why-us-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .why-us h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+        }
+
+        .why-us-list {
+            list-style: none;
+        }
+
+        .why-us-list li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .why-us-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .why-us-image {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 100px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 20px;
+            background: var(--light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial p {
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .testimonial-role {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.3);
+        }
+
+        .price {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .pricing-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .pricing-card.featured h3,
+        .pricing-card.featured .price {
+            color: var(--accent);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            color: #666;
+        }
+
+        .pricing-card.featured .pricing-features li {
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background: var(--light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+        }
+
+        .contact-item-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .contact-item p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .form-submit:hover {
+            background: #FF5722;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .stat-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .why-us-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .trust-items {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Cool<span>Comfort</span></div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Call Now</button>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Your AC Deserves Expert Care</h1>
+            <p>Professional AC repair & HVAC services available 24/7</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Schedule Service</button>
+                <button class="btn btn-secondary" onclick="alert('Call: (555) 123-4567')">Call: (555) 123-4567</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <h2>Why Homeowners Trust Us</h2>
+            <div class="trust-items">
+                <div class="trust-item">
+                    <div class="trust-item-icon">🏆</div>
+                    <h3>Licensed & Insured</h3>
+                    <p>Fully certified technicians with 20+ years of experience</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">⚡</div>
+                    <h3>24/7 Emergency Service</h3>
+                    <p>Same-day appointments available</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">💰</div>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden fees, upfront quotes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">❄️</div>
+                    <h3>AC Installation</h3>
+                    <p>Professional installation of new air conditioning systems with warranty coverage and expert guidance on choosing the right unit for your home.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>AC Repair</h3>
+                    <p>Emergency repairs for all AC brands. We diagnose issues quickly and provide immediate solutions to get your system running efficiently.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧹</div>
+                    <h3>Maintenance</h3>
+                    <p>Regular maintenance programs to keep your system running smoothly and prevent costly breakdowns during peak seasons.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌡️</div>
+                    <h3>Thermostat Service</h3>
+                    <p>Professional thermostat installation and repair including smart thermostat upgrades for better temperature control.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💨</div>
+                    <h3>Ductwork Service</h3>
+                    <p>Duct cleaning, repair, and sealing to improve air quality and system efficiency throughout your home.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌬️</div>
+                    <h3>Heat Pump Service</h3>
+                    <p>Complete heat pump installation, repair, and maintenance for year-round comfort and energy efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="why-us-content">
+                <div>
+                    <h2>Why Choose Cool Comfort?</h2>
+                    <ul class="why-us-list">
+                        <li>20+ years of industry experience</li>
+                        <li>Certified and licensed technicians</li>
+                        <li>Same-day appointments available</li>
+                        <li>Transparent, upfront pricing</li>
+                        <li>Full warranty on all work</li>
+                        <li>Energy-efficient solutions</li>
+                        <li>24/7 emergency service</li>
+                        <li>Fully insured and bonded</li>
+                    </ul>
+                </div>
+                <div class="why-us-image">
+                    🔧
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Cool Comfort fixed my AC in under an hour. The technician was professional and friendly. Highly recommended!"</p>
+                    <div class="testimonial-author">Sarah Johnson</div>
+                    <div class="testimonial-role">Homeowner</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Best AC service in town. Fair pricing and they went above and beyond. Will definitely call them again."</p>
+                    <div class="testimonial-author">Mike Davis</div>
+                    <div class="testimonial-role">Property Manager</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Called for emergency repair on a Sunday. They came within 2 hours and saved my system. Amazing service!"</p>
+                    <div class="testimonial-author">Lisa Martinez</div>
+                    <div class="testimonial-role">Homeowner</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Service Pricing</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Basic Service Call</h3>
+                    <div class="price">$89</div>
+                    <p style="color: #666; margin-bottom: 20px;">One-time service</p>
+                    <ul class="pricing-features">
+                        <li>✓ Diagnostics</li>
+                        <li>✓ System inspection</li>
+                        <li>✓ Repair estimate</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%;">Book Service</button>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Annual Maintenance</h3>
+                    <div class="price">$199</div>
+                    <p style="margin-bottom: 20px;">Per year</p>
+                    <ul class="pricing-features">
+                        <li>✓ 2 professional inspections</li>
+                        <li>✓ Filter replacement</li>
+                        <li>✓ System cleaning</li>
+                        <li>✓ Priority service</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%;">Get Started</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Installation</h3>
+                    <div class="price">From $2,499</div>
+                    <p style="color: #666; margin-bottom: 20px;">Prices vary by system</p>
+                    <ul class="pricing-features">
+                        <li>✓ System evaluation</li>
+                        <li>✓ Professional installation</li>
+                        <li>✓ 5-year warranty</li>
+                        <li>✓ Training included</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%;">Get Quote</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Don't Wait For Your AC to Break Down</h2>
+            <p>Schedule your maintenance service today and save money on repairs</p>
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Schedule Now</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <div class="contact-item">
+                        <div class="contact-item-title">📞 Phone</div>
+                        <p>(555) 123-4567</p>
+                        <p style="font-size: 14px; color: #999;">Available 24/7</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-title">📧 Email</div>
+                        <p><a href="mailto:info@coolcomfort.com" style="color: var(--secondary); text-decoration: none;">info@coolcomfort.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-title">📍 Service Area</div>
+                        <p>Greater Metropolitan Area & Surrounding Counties</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-title">⏰ Hours</div>
+                        <p>24/7 Emergency Service</p>
+                        <p style="font-size: 14px; color: #999;">Regular: 7am - 9pm Daily</p>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Needed</label>
+                        <select id="service" name="service" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Poppins', sans-serif;">
+                            <option value="">Select a service...</option>
+                            <option value="repair">AC Repair</option>
+                            <option value="installation">AC Installation</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="emergency">Emergency Service</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Request Service</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Cool Comfort</h4>
+                    <p>Providing professional AC repair and HVAC services for over 20 years. Your comfort is our priority.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">AC Repair</a></li>
+                        <li><a href="#services">AC Installation</a></li>
+                        <li><a href="#services">Maintenance</a></li>
+                        <li><a href="#services">Emergency Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Email: info@coolcomfort.com</p>
+                    <p>Available 24/7</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cool Comfort AC Repair. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky navigation on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your interest! We will contact you shortly to confirm your appointment.');
+            event.target.reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation for stats (if added)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-in';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .testimonial, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
