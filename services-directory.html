@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Services Directory | Find Local Experts</title>
+    <meta name="description" content="Discover top-rated local service professionals in your area. HVAC, plumbing, electrical, and more.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563EB;
+            --secondary: #1E40AF;
+            --accent: #F59E0B;
+            --success: #10B981;
+            --danger: #EF4444;
+            --light: #F3F4F6;
+            --dark: #111827;
+            --text: #374151;
+            --border: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .search-container input,
+        .search-container select {
+            padding: 12px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .search-container button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-container button:hover {
+            background: #D97706;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 60px 20px;
+        }
+
+        /* Filters Sidebar */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+        }
+
+        .filters {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-group h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .filter-group input[type="checkbox"] {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        /* Services Grid */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .service-provider {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .service-provider:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .provider-header {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .provider-badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .provider-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 10px 0;
+        }
+
+        .provider-category {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .provider-body {
+            padding: 20px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: #FCD34D;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .rating-text {
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .provider-info {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .provider-info p {
+            margin-bottom: 8px;
+            color: #6B7280;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .tag {
+            background: var(--light);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .provider-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-small {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary-small {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary-small:hover {
+            background: var(--secondary);
+        }
+
+        .btn-secondary-small {
+            background: var(--light);
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary-small:hover {
+            background: white;
+            border-color: var(--primary);
+        }
+
+        /* No Results */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .no-results-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .no-results h2 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .no-results p {
+            color: #6B7280;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .search-container {
+                grid-template-columns: 1fr;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                position: static;
+            }
+
+            .services-list {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .provider-footer {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Find Local Service Professionals</h1>
+            <p>Vetted experts ready to help with your next project</p>
+            <div class="search-container">
+                <input type="text" placeholder="Search by service or company name...">
+                <select>
+                    <option value="">All Categories</option>
+                    <option value="hvac">HVAC & Air Conditioning</option>
+                    <option value="plumbing">Plumbing</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="roofing">Roofing</option>
+                    <option value="landscaping">Landscaping</option>
+                </select>
+                <select>
+                    <option value="">All Locations</option>
+                    <option value="nyc">New York</option>
+                    <option value="la">Los Angeles</option>
+                    <option value="chicago">Chicago</option>
+                    <option value="houston">Houston</option>
+                </select>
+                <button>Search</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Filters -->
+                <aside class="filters">
+                    <div class="filter-group">
+                        <h3>Category</h3>
+                        <label><input type="checkbox" checked> HVAC & AC (12)</label>
+                        <label><input type="checkbox"> Plumbing (8)</label>
+                        <label><input type="checkbox"> Electrical (10)</label>
+                        <label><input type="checkbox"> Roofing (6)</label>
+                        <label><input type="checkbox"> General Repair (15)</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Rating</h3>
+                        <label><input type="checkbox" checked> 4.5+ Stars (25)</label>
+                        <label><input type="checkbox"> 4.0+ Stars (18)</label>
+                        <label><input type="checkbox"> 3.5+ Stars (8)</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Availability</h3>
+                        <label><input type="checkbox" checked> Available Today</label>
+                        <label><input type="checkbox"> Emergency Service</label>
+                        <label><input type="checkbox"> Same Day</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Price Range</h3>
+                        <label><input type="checkbox"> Under $100</label>
+                        <label><input type="checkbox" checked> $100-$500</label>
+                        <label><input type="checkbox"> $500+</label>
+                    </div>
+                </aside>
+
+                <!-- Services Grid -->
+                <div>
+                    <div class="services-list">
+                        <!-- Service Provider 1 -->
+                        <div class="service-provider">
+                            <div class="provider-header">
+                                <div class="provider-badge">✓ Verified</div>
+                                <div class="provider-name">Cool Comfort AC</div>
+                                <div class="provider-category">HVAC & Air Conditioning</div>
+                            </div>
+                            <div class="provider-body">
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-text">4.9 (127 reviews)</span>
+                                </div>
+                                <div class="provider-info">
+                                    <p><span class="info-label">📍 Location:</span> Metropolitan Area</p>
+                                    <p><span class="info-label">⏰ Response:</span> Within 1 hour</p>
+                                    <p><span class="info-label">💰 Starting from:</span> $89</p>
+                                </div>
+                                <div class="service-tags">
+                                    <span class="tag">24/7 Service</span>
+                                    <span class="tag">Installation</span>
+                                    <span class="tag">Repair</span>
+                                    <span class="tag">Maintenance</span>
+                                </div>
+                                <div class="provider-footer">
+                                    <button class="btn-small btn-primary-small">View Profile</button>
+                                    <button class="btn-small btn-secondary-small">Contact</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Service Provider 2 -->
+                        <div class="service-provider">
+                            <div class="provider-header">
+                                <div class="provider-badge">✓ Verified</div>
+                                <div class="provider-name">Elite Plumbing Co</div>
+                                <div class="provider-category">Plumbing Services</div>
+                            </div>
+                            <div class="provider-body">
+                                <div class="rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-text">4.7 (94 reviews)</span>
+                                </div>
+                                <div class="provider-info">
+                                    <p><span class="info-label">📍 Location:</span> City Center & Suburbs</p>
+                                    <p><span class="info-label">⏰ Response:</span> 2-4 hours</p>
+                                    <p><span class="info-label">💰 Starting from:</span> $120</p>
+                                </div>
+                                <div class="service-tags">
+                                    <span class="tag">Repairs</span>
+                                    <span class="tag">Installation</span>
+                                    <span class="tag">Emergency</span>
+                                </div>
+                                <div class="provider-footer">
+                                    <button class="btn-small btn-primary-small">View Profile</button>
+                                    <button class="btn-small btn-secondary-small">Contact</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Service Provider 3 -->
+                        <div class="service-provider">
+                            <div class="provider-header">
+                                <div class="provider-badge">✓ Verified</div>
+                                <div class="provider-name">PowerTech Electrical</div>
+                                <div class="provider-category">Electrical Services</div>
+                            </div>
+                            <div class="provider-body">
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-text">4.8 (156 reviews)</span>
+                                </div>
+                                <div class="provider-info">
+                                    <p><span class="info-label">📍 Location:</span> Entire Region</p>
+                                    <p><span class="info-label">⏰ Response:</span> Within 2 hours</p>
+                                    <p><span class="info-label">💰 Starting from:</span> $150</p>
+                                </div>
+                                <div class="service-tags">
+                                    <span class="tag">Repairs</span>
+                                    <span class="tag">Upgrades</span>
+                                    <span class="tag">New Install</span>
+                                    <span class="tag">24/7</span>
+                                </div>
+                                <div class="provider-footer">
+                                    <button class="btn-small btn-primary-small">View Profile</button>
+                                    <button class="btn-small btn-secondary-small">Contact</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Service Provider 4 -->
+                        <div class="service-provider">
+                            <div class="provider-header">
+                                <div class="provider-badge">✓ Verified</div>
+                                <div class="provider-name">Roofing Masters</div>
+                                <div class="provider-category">Roofing & Repairs</div>
+                            </div>
+                            <div class="provider-body">
+                                <div class="rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-text">4.6 (73 reviews)</span>
+                                </div>
+                                <div class="provider-info">
+                                    <p><span class="info-label">📍 Location:</span> Countywide Service</p>
+                                    <p><span class="info-label">⏰ Response:</span> Next business day</p>
+                                    <p><span class="info-label">💰 Starting from:</span> $500</p>
+                                </div>
+                                <div class="service-tags">
+                                    <span class="tag">New Roof</span>
+                                    <span class="tag">Repairs</span>
+                                    <span class="tag">Inspection</span>
+                                </div>
+                                <div class="provider-footer">
+                                    <button class="btn-small btn-primary-small">View Profile</button>
+                                    <button class="btn-small btn-secondary-small">Contact</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Service Provider 5 -->
+                        <div class="service-provider">
+                            <div class="provider-header">
+                                <div class="provider-badge">✓ Verified</div>
+                                <div class="provider-name">Green Thumb Landscape</div>
+                                <div class="provider-category">Landscaping & Maintenance</div>
+                            </div>
+                            <div class="provider-body">
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-text">4.9 (112 reviews)</span>
+                                </div>
+                                <div class="provider-info">
+                                    <p><span class="info-label">📍 Location:</span> Greater Metro Area</p>
+                                    <p><span class="info-label">⏰ Response:</span> Same week appointment</p>
+                                    <p><span class="info-label">💰 Starting from:</span> $200</p>
+                                </div>
+                                <div class="service-tags">
+                                    <span class="tag">Maintenance</span>
+                                    <span class="tag">Design</span>
+                                    <span class="tag">Seasonal</span>
+                                </div>
+                                <div class="provider-footer">
+                                    <button class="btn-small btn-primary-small">View Profile</button>
+                                    <button class="btn-small btn-secondary-small">Contact</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Service Provider 6 -->
+                        <div class="service-provider">
+                            <div class="provider-header">
+                                <div class="provider-badge">✓ Verified</div>
+                                <div class="provider-name">Pro Handyman Services</div>
+                                <div class="provider-category">General Repairs & Maintenance</div>
+                            </div>
+                            <div class="provider-body">
+                                <div class="rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-text">4.5 (89 reviews)</span>
+                                </div>
+                                <div class="provider-info">
+                                    <p><span class="info-label">📍 Location:</span> City & Surrounding</p>
+                                    <p><span class="info-label">⏰ Response:</span> 24-48 hours</p>
+                                    <p><span class="info-label">💰 Starting from:</span> $75</p>
+                                </div>
+                                <div class="service-tags">
+                                    <span class="tag">Repairs</span>
+                                    <span class="tag">Drywall</span>
+                                    <span class="tag">Painting</span>
+                                    <span class="tag">General</span>
+                                </div>
+                                <div class="provider-footer">
+                                    <button class="btn-small btn-primary-small">View Profile</button>
+                                    <button class="btn-small btn-secondary-small">Contact</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Professional Services Directory. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">
+                Connect with vetted local service professionals | Secure booking | Transparent pricing
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Add interactivity
+        document.querySelectorAll('.btn-small').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const action = this.textContent;
+                const providerName = this.closest('.service-provider').querySelector('.provider-name').textContent;
+                if (action === 'View Profile') {
+                    alert(`Viewing full profile for ${providerName}`);
+                } else if (action === 'Contact') {
+                    alert(`Contacting ${providerName}...`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

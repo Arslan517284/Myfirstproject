@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Pages Collection - Professional Web Templates</title>
+    <meta name="description" content="A collection of professionally designed landing pages for various industries including AC repair, SaaS, fitness, services, and more.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366F1;
+            --secondary: #EC4899;
+            --accent: #F59E0B;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --text: #334155;
+            --border: #E2E8F0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            color: var(--text);
+            background: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 20px;
+        }
+
+        .content-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        /* Landing Pages Grid */
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .page-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .page-preview {
+            height: 200px;
+            background: linear-gradient(135deg, var(--light) 0%, #F1F5F9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-card.ac .page-preview {
+            background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+        }
+
+        .page-card.saas .page-preview {
+            background: linear-gradient(135deg, #F0F4FF 0%, #E0E7FF 100%);
+        }
+
+        .page-card.fitness .page-preview {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+        }
+
+        .page-card.services .page-preview {
+            background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+        }
+
+        .page-card.directory .page-preview {
+            background: linear-gradient(135deg, #E9D5FF 0%, #F3E8FF 100%);
+        }
+
+        .page-content {
+            padding: 25px;
+        }
+
+        .page-category {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .page-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .page-description {
+            font-size: 14px;
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .page-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            background: var(--light);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .page-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-view {
+            flex: 1;
+            padding: 10px 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-size: 13px;
+        }
+
+        .btn-view:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-code {
+            padding: 10px 16px;
+            background: var(--light);
+            color: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+        }
+
+        .btn-code:hover {
+            background: white;
+            border-color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 12px;
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--light);
+            padding: 60px 20px;
+            border-radius: 12px;
+            margin: 80px 0;
+        }
+
+        .about-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            color: #64748B;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            max-width: 800px;
+        }
+
+        /* Technologies */
+        .tech-stack {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-badge {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .pages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            .page-actions {
+                flex-direction: column;
+            }
+
+            .btn-code {
+                width: 100%;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>🚀 Landing Pages Collection</h1>
+            <p>A curated collection of professional, production-ready landing page templates for various industries</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#all" class="active">All Templates</a>
+            <a href="#featured">Featured</a>
+            <a href="#resources">Resources</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Featured Templates -->
+            <section class="content-section" id="featured">
+                <h2 class="section-title">✨ Featured Templates</h2>
+                <div class="pages-grid">
+                    <!-- Cool Comfort AC -->
+                    <div class="page-card ac">
+                        <div class="page-preview">❄️</div>
+                        <div class="page-content">
+                            <span class="page-category">Service</span>
+                            <div class="page-name">Cool Comfort AC Repair</div>
+                            <p class="page-description">Professional landing page for an AC repair and HVAC services business with 24/7 emergency service messaging.</p>
+                            <div class="page-features">
+                                <span class="feature-tag">Responsive</span>
+                                <span class="feature-tag">Contact Form</span>
+                                <span class="feature-tag">SEO Ready</span>
+                                <span class="feature-tag">Pricing</span>
+                            </div>
+                            <div class="page-actions">
+                                <a href="ac-repair-landing.html" target="_blank" class="btn-view">View Live →</a>
+                                <button class="btn-code" onclick="alert('Copy: ac-repair-landing.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CloudSync SaaS -->
+                    <div class="page-card saas">
+                        <div class="page-preview">☁️</div>
+                        <div class="page-content">
+                            <span class="page-category">SaaS</span>
+                            <div class="page-name">CloudSync Project Management</div>
+                            <p class="page-description">Modern SaaS landing page for a project management platform with pricing, features, and testimonials.</p>
+                            <div class="page-features">
+                                <span class="feature-tag">Pricing Table</span>
+                                <span class="feature-tag">Testimonials</span>
+                                <span class="feature-tag">Features Grid</span>
+                                <span class="feature-tag">CTA</span>
+                            </div>
+                            <div class="page-actions">
+                                <a href="cloudsync-saas.html" target="_blank" class="btn-view">View Live →</a>
+                                <button class="btn-code" onclick="alert('Copy: cloudsync-saas.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FitPulse App -->
+                    <div class="page-card fitness">
+                        <div class="page-preview">💪</div>
+                        <div class="page-content">
+                            <span class="page-category">Mobile App</span>
+                            <div class="page-name">FitPulse AI Fitness</div>
+                            <p class="page-description">Fitness app landing page featuring AI-powered workouts, nutrition tracking, and live coaching features.</p>
+                            <div class="page-features">
+                                <span class="feature-tag">Download Buttons</span>
+                                <span class="feature-tag">Stats</span>
+                                <span class="feature-tag">App Features</span>
+                                <span class="feature-tag">User Reviews</span>
+                            </div>
+                            <div class="page-actions">
+                                <a href="fitpulse-app.html" target="_blank" class="btn-view">View Live →</a>
+                                <button class="btn-code" onclick="alert('Copy: fitpulse-app.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Services Directory -->
+                    <div class="page-card directory">
+                        <div class="page-preview">🔍</div>
+                        <div class="page-content">
+                            <span class="page-category">Directory</span>
+                            <div class="page-name">Professional Services Directory</div>
+                            <p class="page-description">Filterable service provider directory with ratings, pricing, and contact information for local professionals.</p>
+                            <div class="page-features">
+                                <span class="feature-tag">Filters</span>
+                                <span class="feature-tag">Search</span>
+                                <span class="feature-tag">Ratings</span>
+                                <span class="feature-tag">Grid Layout</span>
+                            </div>
+                            <div class="page-actions">
+                                <a href="services-directory.html" target="_blank" class="btn-view">View Live →</a>
+                                <button class="btn-code" onclick="alert('Copy: services-directory.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Unsplash Gallery -->
+                    <div class="page-card">
+                        <div class="page-preview">🖼️</div>
+                        <div class="page-content">
+                            <span class="page-category">Gallery</span>
+                            <div class="page-name">Unsplash Image Gallery</div>
+                            <p class="page-description">Beautiful image gallery with Unsplash API integration, search functionality, and lazy loading.</p>
+                            <div class="page-features">
+                                <span class="feature-tag">API Integration</span>
+                                <span class="feature-tag">Search</span>
+                                <span class="feature-tag">Lazy Load</span>
+                                <span class="feature-tag">Responsive</span>
+                            </div>
+                            <div class="page-actions">
+                                <a href="index.html" target="_blank" class="btn-view">View Live →</a>
+                                <button class="btn-code" onclick="alert('Copy: index.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Gallery -->
+                    <div class="page-card">
+                        <div class="page-preview">📸</div>
+                        <div class="page-content">
+                            <span class="page-category">Gallery</span>
+                            <div class="page-name">Advanced Unsplash Gallery</div>
+                            <p class="page-description">Advanced image gallery with color filters, multiple grid layouts, favorites, and dark mode support.</p>
+                            <div class="page-features">
+                                <span class="feature-tag">Dark Mode</span>
+                                <span class="feature-tag">Filters</span>
+                                <span class="feature-tag">Favorites</span>
+                                <span class="feature-tag">Download</span>
+                            </div>
+                            <div class="page-actions">
+                                <a href="advanced.html" target="_blank" class="btn-view">View Live →</a>
+                                <button class="btn-code" onclick="alert('Copy: advanced.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <h2 style="font-size: 32px; margin-bottom: 10px;">📊 Collection Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>6+</h3>
+                        <p>Landing Page Templates</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Mobile Responsive</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>0</h3>
+                        <p>Dependencies</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>&lt;2s</h3>
+                        <p>Page Load Time</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section class="content-section" id="resources">
+                <h2 class="section-title">📚 Resources & Guides</h2>
+                <div class="pages-grid">
+                    <div class="page-card">
+                        <div class="page-preview">📖</div>
+                        <div class="page-content">
+                            <div class="page-name">README Guide</div>
+                            <p class="page-description">Complete documentation and setup instructions for all landing page templates.</p>
+                            <div class="page-actions">
+                                <a href="README.md" target="_blank" class="btn-view">Read Docs →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <div class="page-preview">🎨</div>
+                        <div class="page-content">
+                            <div class="page-name">Design System</div>
+                            <p class="page-description">Color schemes, typography, and component patterns used across all templates.</p>
+                            <div class="page-actions">
+                                <button class="btn-view" onclick="alert('View design system documentation')">View System →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="page-card">
+                        <div class="page-preview">💻</div>
+                        <div class="page-content">
+                            <div class="page-name">Code Examples</div>
+                            <p class="page-description">Common code patterns and snippets used in these templates.</p>
+                            <div class="page-actions">
+                                <button class="btn-view" onclick="alert('View code examples')">View Code →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about-section" id="about">
+                <h2>ℹ️ About This Collection</h2>
+                <p>This collection contains professionally designed, production-ready landing page templates for various industries and use cases. Each template is built with HTML5, CSS3, and vanilla JavaScript with no external dependencies.</p>
+                <p>All pages are fully responsive, SEO-optimized, and follow modern web design best practices. Use these templates as-is or customize them for your specific needs.</p>
+
+                <h3 style="font-size: 20px; font-weight: 700; color: var(--dark); margin-top: 30px; margin-bottom: 15px;">🛠️ Built With</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">Responsive Design</span>
+                    <span class="tech-badge">SEO Optimized</span>
+                    <span class="tech-badge">Accessible</span>
+                    <span class="tech-badge">No Dependencies</span>
+                    <span class="tech-badge">Fast Loading</span>
+                </div>
+
+                <h3 style="font-size: 20px; font-weight: 700; color: var(--dark); margin-top: 30px; margin-bottom: 15px;">✅ Features</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div>
+                        <strong style="color: var(--primary);">📱 Fully Responsive</strong>
+                        <p style="color: #64748B; font-size: 14px; margin-top: 8px;">Works perfectly on desktop, tablet, and mobile devices.</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary);">⚡ Lightning Fast</strong>
+                        <p style="color: #64748B; font-size: 14px; margin-top: 8px;">Optimized for fast loading and smooth performance.</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary);">🎨 Beautiful Design</strong>
+                        <p style="color: #64748B; font-size: 14px; margin-top: 8px;">Modern, clean designs that convert visitors to customers.</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary);">🔍 SEO Ready</strong>
+                        <p style="color: #64748B; font-size: 14px; margin-top: 8px;">Built with SEO best practices in mind.</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary);">♿ Accessible</strong>
+                        <p style="color: #64748B; font-size: 14px; margin-top: 8px;">WCAG compliant for accessibility standards.</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary);">🔧 Customizable</strong>
+                        <p style="color: #64748B; font-size: 14px; margin-top: 8px;">Easy to modify colors, text, and layout.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Landing Pages Collection. All templates are free to use and customize.</p>
+            <div class="footer-links">
+                <a href="#featured">Templates</a>
+                <a href="#resources">Resources</a>
+                <a href="#about">About</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p style="font-size: 13px; margin-top: 20px;">Built with ❤️ for developers and designers</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation active state
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Copy to clipboard simulation
+        document.querySelectorAll('.btn-code').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const text = this.getAttribute('onclick');
+                if (text.includes('Copy:')) {
+                    const fileName = text.match(/Copy: (.+)/)[1];
+                    alert('Filename: ' + fileName + '\n\nReady to download!');
+                }
+            });
+        });
+
+        // Scroll to top effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>

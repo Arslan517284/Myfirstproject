@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Unsplash Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --bg-light: #f8f9fa;
+            --bg-dark: #1a1a2e;
+            --text-light: #333;
+            --text-dark: #e0e0e0;
+            --accent: #ff6b6b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            padding: 20px;
+            transition: background 0.3s;
+        }
+
+        body.dark-mode {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-controls {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .controls-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        input, select {
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.secondary {
+            background: var(--secondary);
+        }
+
+        button.danger {
+            background: var(--accent);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 5px;
+            background: #e0e0e0;
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        .view-toggle button {
+            padding: 8px 16px;
+            background: transparent;
+            color: var(--text-light);
+            box-shadow: none;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .view-toggle button.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        .gallery {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .gallery.grid-2 {
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        }
+
+        .gallery.grid-3 {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        .gallery.grid-4 {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+
+        .image-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+            background: #f0f0f0;
+            aspect-ratio: 1;
+        }
+
+        .image-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .image-card:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .image-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            background: white;
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .image-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-size: cover;
+            border: 2px solid white;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .photographer-name {
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .photo-location {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            padding: 40px 20px;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .load-more-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .error {
+            background: var(--accent);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .favorites-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .favorites-panel.show {
+            display: block;
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+        }
+
+        .favorite-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .favorite-thumbnail:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .favorite-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .favorite-remove {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.8em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .favorite-thumbnail:hover .favorite-remove {
+            opacity: 1;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery.grid-2 {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .gallery.grid-3 {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .gallery.grid-4 {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-controls">
+                <button class="toggle-btn" onclick="toggleDarkMode()" title="Toggle dark mode">🌙</button>
+            </div>
+            <h1>🖼️ Advanced Unsplash Gallery</h1>
+            <p>Beautiful photos. Powerful features.</p>
+        </header>
+
+        <div class="controls-section">
+            <div class="search-grid">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search for images..."
+                >
+                <select id="colorFilter">
+                    <option value="">All Colors</option>
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="purple">Purple</option>
+                    <option value="pink">Pink</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="brown">Brown</option>
+                </select>
+                <select id="orientationFilter">
+                    <option value="squarish">Square</option>
+                    <option value="landscape">Landscape</option>
+                    <option value="portrait">Portrait</option>
+                </select>
+            </div>
+
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="sortFilter">Sort By:</label>
+                    <select id="sortFilter">
+                        <option value="relevant">Relevant</option>
+                        <option value="latest">Latest</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="orderFilter">Order:</label>
+                    <select id="orderFilter">
+                        <option value="desc">Descending</option>
+                        <option value="asc">Ascending</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button onclick="searchImages()">🔍 Search</button>
+                <button class="secondary" onclick="getRandomImages()">🎲 Random</button>
+                <button class="secondary" onclick="toggleFavorites()">❤️ Favorites (<span id="favCount">0</span>)</button>
+                <button class="danger" onclick="clearHistory()">🗑️ Clear</button>
+            </div>
+
+            <div class="view-toggle">
+                <button class="active" onclick="setGridView(2)" data-cols="2">Grid 2</button>
+                <button onclick="setGridView(3)" data-cols="3">Grid 3</button>
+                <button onclick="setGridView(4)" data-cols="4">Grid 4</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalLoaded">0</div>
+                    <div class="stat-label">Images Loaded</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="favCountStat">0</div>
+                    <div class="stat-label">Favorites</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="currentPage">1</div>
+                    <div class="stat-label">Current Page</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="favorites" class="favorites-panel">
+            <h3 style="margin-bottom: 15px; color: var(--text-light);">Saved Favorites</h3>
+            <div class="favorites-grid" id="favoritesGrid"></div>
+        </div>
+
+        <div id="error" class="error"></div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading amazing photos...</p>
+        </div>
+
+        <div id="gallery" class="gallery grid-2"></div>
+
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <div class="empty-state-icon">🖼️</div>
+            <h2>Start by searching for images</h2>
+            <p>Try "nature", "city", "coffee", or any topic</p>
+        </div>
+
+        <div class="load-more-section">
+            <button id="loadMoreBtn" onclick="loadMoreImages()" style="display: none;">Load More Images</button>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://api.unsplash.com';
+        const ACCESS_KEY = 'YOUR_UNSPLASH_ACCESS_KEY';
+
+        let currentPage = 1;
+        let currentQuery = 'nature';
+        let isLoading = false;
+        let totalLoaded = 0;
+        let gridView = 2;
+        let favorites = [];
+
+        // Initialize
+        function init() {
+            loadFavorites();
+            updateFavoriteCount();
+            document.getElementById('emptyState').style.display = 'block';
+        }
+
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Load dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Set grid view
+        function setGridView(cols) {
+            gridView = cols;
+            const gallery = document.getElementById('gallery');
+            gallery.className = `gallery grid-${cols}`;
+
+            document.querySelectorAll('.view-toggle button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            localStorage.setItem('gridView', cols);
+        }
+
+        // Load/restore grid view
+        if (localStorage.getItem('gridView')) {
+            gridView = parseInt(localStorage.getItem('gridView'));
+            document.querySelector(`[data-cols="${gridView}"]`).classList.add('active');
+            document.getElementById('gallery').className = `gallery grid-${gridView}`;
+        }
+
+        // Show/hide loading
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+            isLoading = show;
+        }
+
+        // Show/hide error
+        function showError(message, show) {
+            const errorDiv = document.getElementById('error');
+            if (show) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            } else {
+                errorDiv.style.display = 'none';
+            }
+        }
+
+        // Fetch images
+        async function fetchImages(query, page = 1) {
+            if (isLoading) return;
+
+            showLoading(true);
+            showError('', false);
+
+            try {
+                const color = document.getElementById('colorFilter').value;
+                const orientation = document.getElementById('orientationFilter').value;
+                const sort = document.getElementById('sortFilter').value;
+                const order = document.getElementById('orderFilter').value;
+
+                let url;
+                if (query.startsWith('random')) {
+                    url = `${API_BASE}/photos/random?count=12&orientation=${orientation}`;
+                } else {
+                    let queryString = `query=${encodeURIComponent(query)}&page=${page}&per_page=12&orientation=${orientation}&sort=${sort}&order=${order}`;
+                    if (color) queryString += `&color=${color}`;
+                    url = `${API_BASE}/search/photos?${queryString}`;
+                }
+
+                const response = await fetch(url);
+
+                if (response.status === 403) {
+                    showError('Rate limit reached. Please register for an API key.', true);
+                    showLoading(false);
+                    return;
+                }
+
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+
+                const data = await response.json();
+                const images = query.startsWith('random') ? data : data.results;
+
+                if (images.length === 0) {
+                    showError('No images found. Try a different search.', true);
+                    showLoading(false);
+                    return;
+                }
+
+                displayImages(images, page === 1);
+                document.getElementById('emptyState').style.display = 'none';
+                document.getElementById('loadMoreBtn').style.display = 'block';
+
+            } catch (error) {
+                showError(`Error: ${error.message}`, true);
+                console.error(error);
+            }
+
+            showLoading(false);
+        }
+
+        // Display images
+        function displayImages(images, clear = true) {
+            const gallery = document.getElementById('gallery');
+
+            if (clear) {
+                gallery.innerHTML = '';
+                totalLoaded = 0;
+            }
+
+            images.forEach(image => {
+                const isFavorite = favorites.some(f => f.id === image.id);
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                card.innerHTML = `
+                    <img
+                        src="${image.urls.regular}"
+                        alt="${image.alt_description || 'Photo'}"
+                        loading="lazy"
+                    >
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="action-btn" onclick="downloadImage('${image.urls.full}', '${image.id}')" title="Download">⬇️</button>
+                            <button class="action-btn fav-btn" onclick="toggleFavorite(${image.id}, this)" title="Add to favorites" data-favorited="${isFavorite}">
+                                ${isFavorite ? '❤️' : '🤍'}
+                            </button>
+                            <button class="action-btn" onclick="openImage('${image.links.html}')" title="Open on Unsplash">↗️</button>
+                        </div>
+                        <div class="image-info">
+                            <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+                                <div class="avatar" style="background-image: url('${image.user.profile_image.medium}')"></div>
+                                <div class="info-text">
+                                    <div class="photographer-name">${image.user.name}</div>
+                                    <div class="photo-location">${image.location?.title || 'Unknown'}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                gallery.appendChild(card);
+                totalLoaded++;
+            });
+
+            updateStats();
+        }
+
+        // Search images
+        function searchImages() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                currentQuery = query;
+                currentPage = 1;
+                fetchImages(query, 1);
+            }
+        }
+
+        // Random images
+        function getRandomImages() {
+            currentQuery = 'random';
+            currentPage = 1;
+            fetchImages('random', 1);
+        }
+
+        // Load more
+        function loadMoreImages() {
+            currentPage++;
+            document.getElementById('currentPage').textContent = currentPage;
+            fetchImages(currentQuery, currentPage);
+        }
+
+        // Download image
+        function downloadImage(url, id) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `unsplash-${id}.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Open image
+        function openImage(url) {
+            window.open(url, '_blank');
+        }
+
+        // Toggle favorite
+        function toggleFavorite(imageId, btn) {
+            const index = favorites.findIndex(f => f.id === imageId);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                btn.textContent = '🤍';
+                btn.dataset.favorited = 'false';
+            } else {
+                favorites.push({ id: imageId });
+                btn.textContent = '❤️';
+                btn.dataset.favorited = 'true';
+            }
+            saveFavorites();
+            updateFavoriteCount();
+            renderFavorites();
+        }
+
+        // Save favorites to localStorage
+        function saveFavorites() {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // Load favorites from localStorage
+        function loadFavorites() {
+            const saved = localStorage.getItem('favorites');
+            favorites = saved ? JSON.parse(saved) : [];
+        }
+
+        // Update favorite count
+        function updateFavoriteCount() {
+            document.getElementById('favCount').textContent = favorites.length;
+            document.getElementById('favCountStat').textContent = favorites.length;
+        }
+
+        // Render favorites
+        function renderFavorites() {
+            // Update buttons in gallery
+            document.querySelectorAll('.fav-btn').forEach(btn => {
+                const card = btn.closest('.image-card');
+                // This is simplified; in a real app, you'd track image IDs properly
+            });
+        }
+
+        // Toggle favorites panel
+        function toggleFavorites() {
+            document.getElementById('favorites').classList.toggle('show');
+        }
+
+        // Clear history
+        function clearHistory() {
+            if (confirm('Clear all images? (Favorites will be kept)')) {
+                document.getElementById('gallery').innerHTML = '';
+                document.getElementById('emptyState').style.display = 'block';
+                document.getElementById('loadMoreBtn').style.display = 'none';
+                totalLoaded = 0;
+                updateStats();
+            }
+        }
+
+        // Update stats
+        function updateStats() {
+            document.getElementById('totalLoaded').textContent = totalLoaded;
+        }
+
+        // Enter key to search
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchImages();
+        });
+
+        // Initialize
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Landing Pages Collection - 9 Professional Templates</title>
+    <meta name="description" content="Access 9 production-ready landing page templates for all industries. No dependencies, fully responsive, SEO optimized, and ready to deploy.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --accent: #0066FF;
+            --accent-light: #3385FF;
+            --success: #00AA44;
+            --warning: #FF9900;
+            --light: #F5F5F5;
+            --lighter: #FAFAFA;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #EEEEEE;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a2a2a 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 20px 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--primary);
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Templates Grid */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .template-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .template-card:hover {
+            box-shadow: 0 10px 40px rgba(0, 102, 255, 0.15);
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--light) 0%, var(--lighter) 100%);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 60px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-category {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .card-description {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            background: var(--light);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .card-actions {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        /* Info Boxes */
+        .info-section {
+            background: var(--lighter);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 40px;
+            margin: 60px 0;
+        }
+
+        .info-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            padding: 20px;
+            background: var(--white);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .info-item strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: var(--white);
+            padding: 15px;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--lighter);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--light);
+        }
+
+        .check {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .cross {
+            color: #999;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--white);
+            padding: 60px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .cta-section .btn {
+            background: var(--white);
+            color: var(--accent);
+            margin: 0 auto;
+        }
+
+        .cta-section .btn:hover {
+            background: var(--light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 80px;
+            border-top: 3px solid var(--accent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 32px;
+            }
+
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .info-section {
+                padding: 25px;
+            }
+
+            .comparison-table {
+                font-size: 12px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px;
+            }
+
+            .cta-section {
+                padding: 40px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 24px;
+            }
+
+            .card-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            .header-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            main {
+                padding: 40px 15px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-section a {
+                display: inline;
+                margin: 0 10px 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>🚀 Complete Landing Pages Collection</h1>
+            <p>9 Production-Ready Professional Templates | No Dependencies | Fully Responsive | Ready to Deploy</p>
+            <div class="header-stats">
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Templates</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Responsive</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Dependencies</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#templates" class="active">Templates</a>
+            <a href="#features">Features</a>
+            <a href="#comparison">Comparison</a>
+            <a href="#guides">Guides</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Templates Section -->
+            <section id="templates">
+                <h2 class="section-title">📋 All Templates</h2>
+                <div class="templates-grid">
+                    <!-- Template 1 -->
+                    <div class="template-card">
+                        <div class="card-header">❄️</div>
+                        <div class="card-body">
+                            <span class="card-category">Service Business</span>
+                            <h3 class="card-title">Cool Comfort AC Repair</h3>
+                            <p class="card-description">Professional landing page for HVAC and AC repair services with 24/7 emergency messaging.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Contact Form</span>
+                                <span class="feature-tag">Pricing Table</span>
+                                <span class="feature-tag">Testimonials</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="ac-repair-landing.html" target="_blank" class="btn btn-primary">View Live →</a>
+                                <button class="btn btn-secondary" onclick="copyFilename('ac-repair-landing.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 2 -->
+                    <div class="template-card">
+                        <div class="card-header">☁️</div>
+                        <div class="card-body">
+                            <span class="card-category">SaaS Software</span>
+                            <h3 class="card-title">CloudSync</h3>
+                            <p class="card-description">Modern project management platform landing page with advanced pricing and feature showcase.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Pricing Tiers</span>
+                                <span class="feature-tag">Features Grid</span>
+                                <span class="feature-tag">Testimonials</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="cloudsync-saas.html" target="_blank" class="btn btn-primary">View Live →</a>
+                                <button class="btn btn-secondary" onclick="copyFilename('cloudsync-saas.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 3 -->
+                    <div class="template-card">
+                        <div class="card-header">💪</div>
+                        <div class="card-body">
+                            <span class="card-category">Mobile App</span>
+                            <h3 class="card-title">FitPulse</h3>
+                            <p class="card-description">AI-powered fitness app landing page with app download buttons and user testimonials.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Download Buttons</span>
+                                <span class="feature-tag">User Stats</span>
+                                <span class="feature-tag">How It Works</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="fitpulse-app.html" target="_blank" class="btn btn-primary">View Live →</a>
+                                <button class="btn btn-secondary" onclick="copyFilename('fitpulse-app.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 4 -->
+                    <div class="template-card">
+                        <div class="card-header">🔍</div>
+                        <div class="card-body">
+                            <span class="card-category">Marketplace</span>
+                            <h3 class="card-title">Services Directory</h3>
+                            <p class="card-description">Professional services marketplace with advanced filtering and search capabilities.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Advanced Filters</span>
+                                <span class="feature-tag">Search Bar</span>
+                                <span class="feature-tag">Ratings System</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="services-directory.html" target="_blank" class="btn btn-primary">View Live →</a>
+                                <button class="btn btn-secondary" onclick="copyFilename('services-directory.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 5 -->
+                    <div class="template-card">
+                        <div class="card-header">🖼️</div>
+                        <div class="card-body">
+                            <span class="card-category">Image Gallery</span>
+                            <h3 class="card-title">Unsplash Gallery</h3>
+                            <p class="card-description">Beautiful image gallery with Unsplash API integration and search functionality.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">API Integration</span>
+                                <span class="feature-tag">Search</span>
+                                <span class="feature-tag">Lazy Loading</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="index.html" target="_blank" class="btn btn-primary">View Live →</a>
+                                <button class="btn btn-secondary" onclick="copyFilename('index.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 6 -->
+                    <div class="template-card">
+                        <div class="card-header">📸</div>
+                        <div class="card-body">
+                            <span class="card-category">Advanced Gallery</span>
+                            <h3 class="card-title">Advanced Gallery</h3>
+                            <p class="card-description">Advanced gallery with color filters, dark mode, favorites, and multiple layouts.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Dark Mode</span>
+                                <span class="feature-tag">Filters</span>
+                                <span class="feature-tag">Favorites</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="advanced.html" target="_blank" class="btn btn-primary">View Live →</a>
+                                <button class="btn btn-secondary" onclick="copyFilename('advanced.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 7 -->
+                    <div class="template-card">
+                        <div class="card-header">🎨</div>
+                        <div class="card-body">
+                            <span class="card-category">Creative Agency</span>
+                            <h3 class="card-title">Studio Nexus</h3>
+                            <p class="card-description">Creative design agency portfolio with project showcase and team profiles.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Portfolio Grid</span>
+                                <span class="feature-tag">Team Section</span>
+                                <span class="feature-tag">Testimonials</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="studio-nexus-agency.html" target="_blank" class="btn btn-primary">View Live →</a>
+                                <button class="btn btn-secondary" onclick="copyFilename('studio-nexus-agency.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 8 -->
+                    <div class="template-card">
+                        <div class="card-header">🏡</div>
+                        <div class="card-body">
+                            <span class="card-category">Real Estate</span>
+                            <h3 class="card-title">Luxury Estates</h3>
+                            <p class="card-description">Premium real estate listings page with property cards and agent profiles.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Property Listings</span>
+                                <span class="feature-tag">Search Bar</span>
+                                <span class="feature-tag">Agent Profiles</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="luxury-estates-real-estate.html" target="_blank" class="btn btn-primary">View Live →</a>
+                                <button class="btn btn-secondary" onclick="copyFilename('luxury-estates-real-estate.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template 9 -->
+                    <div class="template-card">
+                        <div class="card-header">📑</div>
+                        <div class="card-body">
+                            <span class="card-category">Index / Directory</span>
+                            <h3 class="card-title">Portfolio Index</h3>
+                            <p class="card-description">Master index page showcasing all templates with categorization and metadata.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Template Showcase</span>
+                                <span class="feature-tag">Categories</span>
+                                <span class="feature-tag">Resources</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="portfolio-index.html" target="_blank" class="btn btn-primary">View Live →</a>
+                                <button class="btn btn-secondary" onclick="copyFilename('portfolio-index.html')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features">
+                <h2 class="section-title">✨ Key Features</h2>
+                <div class="info-section">
+                    <h3>What's Included</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>📱 100% Responsive</strong>
+                            Works perfectly on all devices from smartphones to desktops
+                        </div>
+                        <div class="info-item">
+                            <strong>⚡ Lightning Fast</strong>
+                            Optimized code and assets load under 2 seconds
+                        </div>
+                        <div class="info-item">
+                            <strong>🔍 SEO Optimized</strong>
+                            Built with search engine best practices and schema markup
+                        </div>
+                        <div class="info-item">
+                            <strong>♿ Accessible</strong>
+                            WCAG compliant with proper semantic HTML and ARIA labels
+                        </div>
+                        <div class="info-item">
+                            <strong>🎨 Easy to Customize</strong>
+                            Simple CSS variables for colors and inline styles for quick changes
+                        </div>
+                        <div class="info-item">
+                            <strong>📦 Zero Dependencies</strong>
+                            No jQuery, Bootstrap, npm, or build tools required
+                        </div>
+                        <div class="info-item">
+                            <strong>💻 Modern Code</strong>
+                            HTML5, CSS3, and vanilla JavaScript best practices
+                        </div>
+                        <div class="info-item">
+                            <strong>🚀 Production Ready</strong>
+                            Deploy immediately to any hosting platform
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparison Section -->
+            <section id="comparison">
+                <h2 class="section-title">🔄 Template Comparison</h2>
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Template</th>
+                                <th>Industry</th>
+                                <th>Contact Form</th>
+                                <th>Pricing</th>
+                                <th>Search</th>
+                                <th>Testimonials</th>
+                                <th>Team Section</th>
+                                <th>Dark Mode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>AC Repair</strong></td>
+                                <td>Services</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CloudSync</strong></td>
+                                <td>SaaS</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FitPulse</strong></td>
+                                <td>App</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Services Directory</strong></td>
+                                <td>Marketplace</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gallery</strong></td>
+                                <td>Creative</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Advanced Gallery</strong></td>
+                                <td>Creative</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Studio Nexus</strong></td>
+                                <td>Agency</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Luxury Estates</strong></td>
+                                <td>Real Estate</td>
+                                <td class="cross">—</td>
+                                <td class="cross">—</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="cross">—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Guides Section -->
+            <section id="guides">
+                <h2 class="section-title">📚 Guides & Documentation</h2>
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="card-header">🚀</div>
+                        <div class="card-body">
+                            <span class="card-category">Quick Start</span>
+                            <h3 class="card-title">Getting Started</h3>
+                            <p class="card-description">5-minute setup guide to choose, customize, and deploy your first template.</p>
+                            <div class="card-actions" style="margin-top: auto;">
+                                <a href="QUICK-START.md" target="_blank" class="btn btn-primary">Read Guide →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="card-header">📖</div>
+                        <div class="card-body">
+                            <span class="card-category">Documentation</span>
+                            <h3 class="card-title">Complete Guide</h3>
+                            <p class="card-description">Comprehensive documentation with customization tips, SEO optimization, and troubleshooting.</p>
+                            <div class="card-actions" style="margin-top: auto;">
+                                <a href="TEMPLATES-GUIDE.md" target="_blank" class="btn btn-primary">View Docs →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="card-header">📝</div>
+                        <div class="card-body">
+                            <span class="card-category">Reference</span>
+                            <h3 class="card-title">General Info</h3>
+                            <p class="card-description">Gallery setup guide and general information about the collections.</p>
+                            <div class="card-actions" style="margin-top: auto;">
+                                <a href="README.md" target="_blank" class="btn btn-primary">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2>Ready to Launch Your Website?</h2>
+                <p>Choose a template, customize it, and deploy in minutes!</p>
+                <a href="#templates" class="btn">Explore Templates ↑</a>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq">
+                <h2 class="section-title">❓ Frequently Asked Questions</h2>
+                <div class="info-section">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Can I use these commercially?</strong>
+                            Yes! All templates are free to use for personal and commercial projects.
+                        </div>
+                        <div class="info-item">
+                            <strong>Do I need to change the design?</strong>
+                            Recommended but optional. Update colors, fonts, and images to match your brand.
+                        </div>
+                        <div class="info-item">
+                            <strong>Are these SEO-optimized?</strong>
+                            Yes, but update titles, descriptions, and content for your specific keywords.
+                        </div>
+                        <div class="info-item">
+                            <strong>Can I add more sections?</strong>
+                            Absolutely! Copy any section you like and customize it to your needs.
+                        </div>
+                        <div class="info-item">
+                            <strong>How do I make contact forms work?</strong>
+                            Use Formspree (easiest), EmailJS, or your own backend server.
+                        </div>
+                        <div class="info-item">
+                            <strong>Can I combine multiple templates?</strong>
+                            Yes! You can mix and match sections from different templates.
+                        </div>
+                        <div class="info-item">
+                            <strong>What hosting should I use?</strong>
+                            Netlify, Vercel, GitHub Pages (free), or traditional hosting ($2-5/month).
+                        </div>
+                        <div class="info-item">
+                            <strong>How do I deploy these?</strong>
+                            Simply upload the HTML file to your hosting or use drag-and-drop services.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Collection</h4>
+                    <ul>
+                        <li><a href="#templates">All Templates</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#comparison">Comparison</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Guides</h4>
+                    <ul>
+                        <li><a href="QUICK-START.md" target="_blank">Quick Start</a></li>
+                        <li><a href="TEMPLATES-GUIDE.md" target="_blank">Full Guide</a></li>
+                        <li><a href="README.md" target="_blank">Setup Info</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Templates</h4>
+                    <ul>
+                        <li><a href="portfolio-index.html" target="_blank">Master Index</a></li>
+                        <li><a href="studio-nexus-agency.html" target="_blank">View Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
+                        <li><a href="https://web.dev" target="_blank">Web.dev</a></li>
+                        <li><a href="https://pagespeed.web.dev" target="_blank">PageSpeed</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Landing Pages Collection. All templates are free to use and modify.</p>
+                <p style="margin-top: 15px; font-size: 12px;">
+                    <strong>9 Professional Templates</strong> • <strong>10,000+ Lines of Code</strong> • <strong>100% Responsive</strong> • <strong>Zero Dependencies</strong>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Copy filename to clipboard
+        function copyFilename(filename) {
+            const text = `Filename: ${filename}`;
+            navigator.clipboard.writeText(filename).then(() => {
+                alert(`Copied: ${filename}`);
+            }).catch(() => {
+                alert(`Filename: ${filename}`);
+            });
+        }
+
+        // Active navigation link
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a, a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#' && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        // Button interactions
+        document.querySelectorAll('.btn').forEach(btn => {
+            if (!btn.href && btn.tagName === 'A') return;
+            btn.addEventListener('click', function() {
+                const text = this.textContent;
+                if (text.includes('View Live')) {
+                    // Already handled by href
+                } else if (text.includes('Read') || text.includes('View')) {
+                    // Already handled by href
+                } else if (text.includes('Explore')) {
+                    // Scroll already handled
+                }
+            });
+        });
+    </script>
+</body>
+</html>
